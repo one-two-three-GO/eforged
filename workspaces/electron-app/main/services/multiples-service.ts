@@ -1,14 +1,9 @@
 import { WindowApiConst } from 'shared-lib';
-import { AbstractService } from './abstract-service';
+import { IPCService } from './ipc-service';
 
-export class MultiplesService extends AbstractService<number, number[]> {
-	receptionChannel(): string {
-		return WindowApiConst.MULTIPLES_INPUT;
-	}
-
-	sendingChannel(): string {
-		return WindowApiConst.MULTIPLES_OUTPUT;
-	}
+export class MultiplesService extends IPCService<number, number[]> {
+	receptionChannel: string = WindowApiConst.MULTIPLES_INPUT;
+	sendingChannel: string = WindowApiConst.MULTIPLES_OUTPUT;
 
 	process(input: number): number[] {
 		// From 1 to 10, return input multiples

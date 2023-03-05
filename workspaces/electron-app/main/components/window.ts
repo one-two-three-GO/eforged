@@ -1,57 +1,64 @@
 import * as remoteMain from '@electron/remote/main';
 import { app, BrowserWindow, ipcMain, nativeImage } from 'electron';
-import * as path from 'node:path';
-import { AbstractService } from '../services/abstract-service';
-import { MultiplesService } from '../services/multiples-service';
+import path from 'node:path';
+import { WindowConfig, DEFAULT_WINDOW_CONFIG } from 'shared-lib';
+import { IPCService } from '../services/ipc-service';
 import { Logger } from '../utils/logger';
 
-declare const global: Global;
-declare const MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY: string;
+export abstract class Window {
+	protected config: WindowConfig;
 
-export class Window {
-	private _electronWindow: BrowserWindow | undefined;
-
-	constructor() {
-		this.createWindow();
-		this.loadRenderer();
-		this.registerService<number, number[]>(new MultiplesService());
+	protected _browserWindow: BrowserWindow | undefined;
+	public get browserWindow(): BrowserWindow | undefined {
+		return this._browserWindow;
 	}
 
-	private createWindow(): void {
-		this._electronWindow = new BrowserWindow({
-			width: 1280,
-			height: 720,
-			backgroundColor: '#FFFFFF',
-			icon: this.loadIcon(),
-			webPreferences: {
-				// Default behavior in Electron since 5, that
-				// limits the powers granted to remote content
-				// except in e2e test when those powers are required
-				nodeIntegration: global.appConfig.isNodeIntegration,
-				// Isolate window context to protect against prototype pollution
-				// except in e2e test when that access is required
-				contextIsolation: global.appConfig.isContextIsolation,
-				// Introduced in Electron 20 and enabled by default
-				// Among others security constraints, it prevents from required
-				// CommonJS modules imports into preload script
-				// which is not bundled yet in dev mode
-				sandbox: global.appConfig.isSandbox,
-				// Use a preload script to enhance security
-				preload: MAIN_WINDOW_PRELOAD_WEBPACK_ENTRY,
-			},
-		});
+	protected constructor(windowConfig: WindowConfig) {
+		this.config = windowConfig;
+		this._browserWindow = Window.create(windowConfig);
+		this.initialize();
+	}
 
-		// Disable the remote module to enhance security
-		// except in e2e test when that access is required
-		if (global.appConfig.isEnableRemoteModule) {
-			remoteMain.enable(this._electronWindow.webContents);
+	protected initialize(): void {
+		/** NOOP */
+	}
+
+	protected registerIPCService<In, Out>(service: IPCService<In, Out>) {
+		ipcMain.on(
+			service.receptionChannel,
+			async (event: Electron.IpcMainEvent, ...parameters: any[]) => {
+				// Handling input
+				const input = parameters[0];
+				Logger.debug(`[${service.receptionChannel}]  =====> `, input);
+				const output: Out = service.process(input);
+
+				// Handling output
+				if (service.sendingChannel) {
+					Logger.debug(`[${service.sendingChannel}] =====> `, output);
+					this.browserWindow.webContents.send(service.sendingChannel, output);
+				}
+			}
+		);
+	}
+
+	protected openDevTools(): void {
+		if (this.config.canOpenDevTools) {
+			this.browserWindow.webContents.on('devtools-opened', () => {
+				this.browserWindow.focus();
+				setImmediate(() => {
+					this.browserWindow.focus();
+				});
+			});
+			this.browserWindow.webContents.openDevTools();
 		}
 	}
 
-	private loadIcon(): Electron.NativeImage | undefined {
+	protected static loadIcon(
+		config: WindowConfig
+	): Electron.NativeImage | undefined {
 		let iconObject;
-		if (global.appConfig.isIconAvailable) {
-			const iconPath = path.join(__dirname, 'icons/icon.png');
+		if (config.iconPath) {
+			const iconPath = path.join(__dirname, config.iconPath);
 			Logger.debug('Icon Path', iconPath);
 			iconObject = nativeImage.createFromPath(iconPath);
 			// Change dock icon on MacOS
@@ -62,64 +69,44 @@ export class Window {
 		return iconObject;
 	}
 
-	private loadRenderer(): void {
-		if (global.appConfig.configId === 'development') {
-			// Dev mode, take advantage of the live reload by loading local URL
-			this.electronWindow.loadURL(`http://localhost:4200`);
-		} else {
-			// Else mode, we simply load angular bundle
-			const indexPath = path.join(
-				__dirname,
-				'../renderer/angular_window/index.html'
-			);
-			this.electronWindow.loadURL(`file://${indexPath}`);
+	public static create(config: WindowConfig): BrowserWindow {
+		config = Window.normalizeConfig(config);
+		const win: BrowserWindow = new BrowserWindow({
+			width: 1280,
+			height: 720,
+			backgroundColor: '#FFFFFF',
+			icon: Window.loadIcon(config),
+			webPreferences: {
+				// Default behavior in Electron since 5, that
+				// limits the powers granted to remote content
+				// except in e2e test when those powers are required
+				nodeIntegration: config.webPreferences.nodeIntegration,
+
+				// Isolate window context to protect against prototype pollution
+				// except in e2e test when that access is required
+				contextIsolation: config.webPreferences.contextIsolation,
+
+				// Introduced in Electron 20 and enabled by default
+				// Among others security constraints, it prevents from required
+				// CommonJS modules imports into preload script
+				// which is not bundled yet in dev mode
+				sandbox: config.webPreferences.sandbox,
+
+				// Use a preload script to enhance security
+				preload: config.webPreferences.preload,
+			},
+		});
+
+		// Disable the remote module to enhance security
+		// except in e2e test when that access is required
+		if (config.enableRemoteModule) {
+			remoteMain.enable(win.webContents);
 		}
 
-		if (global.appConfig.isOpenDevTools) {
-			this.openDevTools();
-		}
-
-		// When the window is closed`
-		this._electronWindow.on('closed', () => {
-			// Remove IPC Main listeners
-			ipcMain.removeAllListeners();
-			// Delete current reference
-			delete this._electronWindow;
-		});
+		return win;
 	}
 
-	private openDevTools(): void {
-		this._electronWindow.webContents.openDevTools();
-		this._electronWindow.webContents.on('devtools-opened', () => {
-			this._electronWindow.focus();
-			setImmediate(() => {
-				this._electronWindow.focus();
-			});
-		});
-	}
-
-	private registerService<In, Out>(service: AbstractService<In, Out>) {
-		ipcMain.on(
-			service.receptionChannel(),
-			async (event: Electron.IpcMainEvent, ...parameters: any[]) => {
-				// Handling input
-				const input = parameters[0];
-				Logger.debug(`[${service.receptionChannel()}]  =====> `, input);
-				const output: Out = service.process(input);
-
-				// Handling output
-				if (service.sendingChannel()) {
-					Logger.debug(`[${service.sendingChannel()}] =====> `, output);
-					this._electronWindow.webContents.send(
-						service.sendingChannel(),
-						output
-					);
-				}
-			}
-		);
-	}
-
-	public get electronWindow(): BrowserWindow | undefined {
-		return this._electronWindow;
+	private static normalizeConfig(config: WindowConfig): WindowConfig {
+		return Object.assign({}, DEFAULT_WINDOW_CONFIG, config);
 	}
 }

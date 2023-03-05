@@ -1,10 +1,10 @@
 import { app, BrowserWindow, shell } from 'electron';
-import { Window } from './window';
+import { MainWindow } from './main-window';
 
 declare const global: Global;
 
 export class App {
-	private static _wrapper: Window;
+	private static _wrapper: MainWindow;
 
 	public static launch(): void {
 		app.on('window-all-closed', App.quit);
@@ -15,14 +15,14 @@ export class App {
 		app.on('web-contents-created', App.openExternalLinksInDefaultBrowser);
 	}
 
-	public static get electronWindow(): BrowserWindow | undefined {
-		return this._wrapper ? this._wrapper.electronWindow : undefined;
+	public static get mainWindow(): BrowserWindow | undefined {
+		return this._wrapper ? this._wrapper.browserWindow : undefined;
 	}
 
 	private static start() {
 		// On MacOS it is common to re-create a window from app even after all windows have been closed
-		if (!App.electronWindow) {
-			App._wrapper = new Window();
+		if (!App.mainWindow) {
+			App._wrapper = new MainWindow();
 		}
 	}
 

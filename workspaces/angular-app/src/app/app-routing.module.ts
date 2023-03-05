@@ -4,6 +4,7 @@ import { MultiplesComponent } from './components/multiples/multiples.component';
 
 const routes: Routes = [
 	{
+		/** The "Main" page, which is drawn over top of the app.component.html */
 		path: '',
 		component: MultiplesComponent,
 	},

@@ -3,27 +3,37 @@
 		"configId": "development",
 		"mainLogFile": "dist/dev-main.log",
 		"mainLogLevel": "debug",
-		"isIconAvailable": true,
-		"isNodeIntegration": false,
-		"isContextIsolation": true,
-		"isEnableRemoteModule": false,
-		"isOpenDevTools": true
+		"webPreferences": {
+			"devTools": true,
+			"nodeIntegration": false,
+			"contextIsolation": true
+		},
+		"enableRemoteModule": false,
+		"canOpenDevTools": true,
+		"iconPath": "icons/icon.png"
 	},
 	"e2e-test": {
 		"configId": "e2e-test",
 		"mainLogFile": "dist/e2e-main.log",
 		"mainLogLevel": "error",
-		"isIconAvailable": true,
-		"isNodeIntegration": true,
-		"isContextIsolation": false,
-		"isEnableRemoteModule": true,
+		"webPreferences": {
+			"devTools": false,
+			"nodeIntegration": true,
+			"contextIsolation": false
+		},
+		"enableRemoteModule": true,
+		"canOpenDevTools": true,
 		"isOpenDevTools": false
 	},
 	"production": {
 		"configId": "production",
 		"mainLogFile": "main.log",
 		"mainLogLevel": "error",
-		"isIconAvailable": false,
-		"isOpenDevTools": false
+		"webPreferences": {
+			"devTools": false,
+			"nodeIntegration": true,
+			"contextIsolation": false
+		},
+		"canOpenDevTools": false
 	}
 }
