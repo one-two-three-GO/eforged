@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file. See [releas
 
 #### Features
 
+- upgrade the rest of the stack ([170703d](https://github.com/one-two-three-GO/eforged/commit/170703d2dee80ba0461c265ffad89e8d86119b03))
 - eslint upgrade - 8.23.1 => 8.35.0 ([1f2d983](https://github.com/one-two-three-GO/eforged/commit/1f2d98396c64896c9ffb83110f38dd3c9f7f939d))
 - electron upgrade - 20.2.0 => 23.12.2 ([929f293](https://github.com/one-two-three-GO/eforged/commit/929f293814317cc08c778d81eabef6a9fbd71476))
 - electron-forge upgrade - 6.0.0-beta.66 => 6.0.5 ([929f293](https://github.com/one-two-three-GO/eforged/commit/929f293814317cc08c778d81eabef6a9fbd71476))
