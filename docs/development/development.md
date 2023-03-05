@@ -50,7 +50,7 @@ A quick-start for Electron with Angular.
 To clone and run this repository, you'll need installed on your computer at least :
 
 - [Git](https://git-scm.com)
-- [Node 14.15.0 or later](https://nodejs.org/en/download/)
+- [Node LTS 14.15.0 or later](https://nodejs.org/en/download/)
 - [Npm 7 or later](https://docs.npmjs.com/about-npm)
 - [Angular-CLI 14 or later](https://angular.io/cli)
 
