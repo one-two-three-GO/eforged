@@ -2,14 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [release-please](https://github.com/googleapis/release-please) for commit guidelines.
 
-## [eforged]()
+## [eforged](https://github.com/one-two-three-GO/eforged)
 
-### [1.0.0]() (`date`)
+## 0.0.1 (2023-03-05)
 
 #### Features
 
-- migrating from standard-version [deprecated] to release-please (`MR`) (`hash`)
-- first commit under new project (`MR`) (`hash`)
+- migrating from standard-version [deprecated] to release-please ([2ee89dd](https://github.com/one-two-three-GO/eforged/commit/2ee89dd53507e76875dd77522d0098ad5dd2b5e1))
+- first commit under new project ([2ee89dd](https://github.com/one-two-three-GO/eforged/commit/2ee89dd53507e76875dd77522d0098ad5dd2b5e1))
 
 ## [electron-angular-quick-start](https://github.com/sourcygen/electron-angular-quick-start)
 
