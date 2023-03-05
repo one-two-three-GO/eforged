@@ -43,13 +43,13 @@
 	"devDependencies": {
 		"@commitlint/cli": "^17.1.2",
 		"@commitlint/config-conventional": "^17.1.0",
-		"@electron-forge/cli": "^6.0.0-beta.66",
-		"@electron-forge/maker-deb": "^6.0.0-beta.66",
-		"@electron-forge/maker-dmg": "^6.0.0-beta.66",
-		"@electron-forge/maker-rpm": "^6.0.0-beta.66",
-		"@electron-forge/maker-squirrel": "^6.0.0-beta.66",
-		"@electron-forge/maker-zip": "^6.0.0-beta.66",
-		"@electron-forge/plugin-webpack": "6.0.0-beta.66",
+		"@electron-forge/cli": "^6.0.5",
+		"@electron-forge/maker-deb": "^6.0.5",
+		"@electron-forge/maker-dmg": "^6.0.5",
+		"@electron-forge/maker-rpm": "^6.0.5",
+		"@electron-forge/maker-squirrel": "^6.0.5",
+		"@electron-forge/maker-zip": "^6.0.5",
+		"@electron-forge/plugin-webpack": "6.0.5",
 		"@types/lodash": "^4.14.185",
 		"@types/node": "^18.7.18",
 		"@typescript-eslint/eslint-plugin": "^5.38.0",
@@ -65,8 +65,8 @@
 		"chromedriver": "^104.0.0",
 		"copy-webpack-plugin": "^11.0.0",
 		"cross-env": "^7.0.3",
-		"css-loader": "^6.7.1",
-		"electron": "^20.2.0",
+		"css-loader": "^6.7.3",
+		"electron": "^23.1.2",
 		"eslint": "^8.23.1",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-import-resolver-typescript": "^3.5.1",
@@ -74,7 +74,7 @@
 		"eslint-plugin-prettier": "^4.2.1",
 		"eslint-plugin-sonarjs": "^0.15.0",
 		"eslint-plugin-unicorn": "^43.0.2",
-		"fork-ts-checker-webpack-plugin": "^7.2.13",
+		"fork-ts-checker-webpack-plugin": "^7.3.0",
 		"husky": "^8.0.1",
 		"lint-staged": "^13.0.3",
 		"node-loader": "^2.0.0",
@@ -94,7 +94,7 @@
 		"wdio-wait-for": "^2.2.6"
 	},
 	"dependencies": {
-		"@electron/remote": "^2.0.8",
+		"@electron/remote": "^2.0.9",
 		"electron-squirrel-startup": "^1.0.0",
 		"fs-extra": "^10.1.0",
 		"winston": "^3.8.2"
@@ -118,49 +118,5 @@
 		"chromedriver",
 		"scss",
 		"live reload"
-	],
-	"config": {
-		"forge": {
-			"packagerConfig": {
-				"name": "Electron Angular App",
-				"executableName": "electron-angular-app",
-				"icon": "./workspaces/electron-app/main/assets/icons/icon"
-			},
-			"makers": [
-				{
-					"name": "@electron-forge/maker-dmg",
-					"config": {}
-				},
-				{
-					"name": "@electron-forge/maker-deb",
-					"config": {}
-				},
-				{
-					"name": "@electron-forge/maker-squirrel",
-					"config": {}
-				}
-			],
-			"plugins": [
-				[
-					"@electron-forge/plugin-webpack",
-					{
-						"mainConfig": "./webpack.main.config.js",
-						"renderer": {
-							"config": "./webpack.renderer.config.js",
-							"entryPoints": [
-								{
-									"html": "./workspaces/electron-app/renderer/index.html",
-									"js": "./workspaces/electron-app/renderer/index.ts",
-									"name": "main_window",
-									"preload": {
-										"js": "./workspaces/electron-app/renderer/preload.ts"
-									}
-								}
-							]
-						}
-					}
-				]
-			]
-		}
-	}
+	]
 }

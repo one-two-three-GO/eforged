@@ -4,14 +4,14 @@
 
 A quick-start for Electron with Angular.
 
-### Versions :
+### Versions
 
-| Dependency       | Version       |
-| ---------------- | ------------- |
-| `Electron Forge` | 6.0.0-beta.66 |
-| `Electron`       | 20.2.0        |
-| `Angular`        | 15.2.1        |
-| `TypeScript`     | 4.9.5         |
+| Dependency                                      | Version |
+| ----------------------------------------------- | ------- |
+| [Electron Forge](https://www.electronforge.io/) | 6.0.5   |
+| [Electron](https://www.electronjs.org/)         | 23.1.2  |
+| [Angular](https://angular.io/)                  | 15.2.1  |
+| [TypeScript](https://www.typescriptlang.org/)   | 4.9.5   |
 
 ### Main features :
 
@@ -31,6 +31,7 @@ A quick-start for Electron with Angular.
  ├── README.md
  ├── _config.yml
  ├── commitlint.config.js
+ ├── forge.config.js
  ├── package-lock.json
  ├── package.json
  ├── tsconfig.json
