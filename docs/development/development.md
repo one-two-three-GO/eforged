@@ -10,8 +10,8 @@ A quick-start for Electron with Angular.
 | ---------------- | ------------- |
 | `Electron Forge` | 6.0.0-beta.66 |
 | `Electron`       | 20.2.0        |
-| `Angular`        | 14.2.3        |
-| `TypeScript`     | 4.8.3         |
+| `Angular`        | 15.2.1        |
+| `TypeScript`     | 4.9.5         |
 
 ### Main features :
 
