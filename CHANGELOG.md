@@ -8,6 +8,8 @@ All notable changes to this project will be documented in this file. See [releas
 
 #### Features
 
+- electron upgrade - 20.2.0 => 23.12.2 ([929f293](https://github.com/one-two-three-GO/eforged/commit/929f293814317cc08c778d81eabef6a9fbd71476))
+- electron-forge upgrade - 6.0.0-beta.66 => 6.0.5 ([929f293](https://github.com/one-two-three-GO/eforged/commit/929f293814317cc08c778d81eabef6a9fbd71476))
 - angular upgrade - 14.2.3 => 15.2.1 ([03df614](https://github.com/one-two-three-GO/eforged/commit/03df614ef10481ad7a64339bf23769addb720d5f))
 - typescript upgrade - 4.8.3 => 4.9.5 ([03df614](https://github.com/one-two-three-GO/eforged/commit/03df614ef10481ad7a64339bf23769addb720d5f))
 - migrating from standard-version [deprecated] to release-please ([2ee89dd](https://github.com/one-two-three-GO/eforged/commit/2ee89dd53507e76875dd77522d0098ad5dd2b5e1))
