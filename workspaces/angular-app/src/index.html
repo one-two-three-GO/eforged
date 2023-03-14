@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>ElectronAngularQuickStart</title>
-		<base href="/" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<!--<meta http-equiv="Content-Security-Policy" content="script-src 'self'" />-->
-		<link rel="icon" type="image/x-icon" href="favicon.ico" />
-	</head>
-	<body>
-		<app-root></app-root>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>ElectronAngularQuickStart</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self'" />-->
+
+    <!-- the electron app isn't getting this because the URL is wrong. 
+			It IS getting some 404 page, which is HTML, which is the wrong type -->
+    <!-- <link rel="stylesheet" type="text/css" href="node_modules/primeicons/primeicons.css" /> -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
+    <app-root></app-root>
+  </body>
 </html>

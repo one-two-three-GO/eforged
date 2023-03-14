@@ -1,0 +1,46 @@
+<div
+  [ngClass]="{
+    'p-menubar p-component': true,
+    'p-menubar-mobile-active': mobileActive
+  }"
+  [class]="styleClass"
+  [ngStyle]="style"
+  (window:resize)="onResize($event)"
+>
+  <div class="p-menubar-start" *ngIf="startTemplate">
+    <ng-container *ngTemplateOutlet="startTemplate"></ng-container>
+  </div>
+
+  <a
+    #menubutton
+    tabindex="0"
+    *ngIf="model && model.length > 0"
+    class="p-menubar-button"
+    (click)="toggle($event)"
+  >
+    <i class="pi pi-bars"></i>
+  </a>
+
+  <!-- [item]="resolvedItem" -->
+  <p-menubarSub
+    #rootmenu
+    [isButtonVisible]="isButtonVisible"
+    [item]="model"
+    [root]="true"
+    [baseZIndex]="baseZIndex"
+    (leafClick)="onLeafClick()"
+    [autoZIndex]="autoZIndex"
+    [mobileActive]="mobileActive"
+    [autoDisplay]="autoDisplay"
+  ></p-menubarSub>
+
+  <div class="p-menubar-end" *ngIf="endTemplate; else legacy">
+    <ng-container *ngTemplateOutlet="endTemplate"></ng-container>
+  </div>
+
+  <ng-template #legacy>
+    <div class="p-menubar-end">
+      <ng-content></ng-content>
+    </div>
+  </ng-template>
+</div>

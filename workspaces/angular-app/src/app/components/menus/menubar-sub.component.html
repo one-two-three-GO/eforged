@@ -1,0 +1,81 @@
+<ul
+  [ngClass]="{ 'p-submenu-list': !root, 'p-menubar-root-list': root }"
+  [attr.role]="root ? 'menubar' : 'menu'"
+>
+  <ng-template ngFor let-child [ngForOf]="root ? item : item.items">
+    <li
+      *ngIf="child.separator"
+      class="p-menu-separator"
+      [ngClass]="{ 'p-hidden': child.visible === false }"
+      role="separator"
+    ></li>
+
+    <li
+      *ngIf="!child.separator"
+      #listItem
+      [ngClass]="{
+        'p-menuitem': true,
+        'p-menuitem-active': child === activeItem,
+        'p-hidden': child.visible === false
+      }"
+      [ngStyle]="child.style"
+      [class]="child.styleClass"
+      role="none"
+      tooltip
+      [tooltipOptions]="child.tooltip"
+    >
+      <a
+        [attr.data-automationid]="child.automationId"
+        [attr.title]="child.tooltip ? child.tooltip.label : ''"
+        [attr.id]="child.id"
+        role="menuitem"
+        (click)="onItemClick($event, child)"
+        (mouseenter)="onItemMouseEnter($event, child)"
+        (mouseleave)="onItemMouseLeave($event, child)"
+        [ngClass]="{ 'p-menuitem-link': true, 'p-disabled': child.disabled }"
+        [attr.tabindex]="child.disabled ? null : '0'"
+        [attr.aria-haspopup]="item.items != null"
+        [attr.aria-expanded]="item === activeItem"
+        pRipple
+      >
+        <span
+          class="p-menuitem-icon"
+          *ngIf="child.icon"
+          [ngClass]="child.icon"
+          [ngStyle]="child.iconStyle"
+        ></span>
+
+        <span
+          class="p-menuitem-text"
+          *ngIf="child.escape !== false; else htmlLabel"
+          >{{ child.label }}</span
+        >
+        <ng-template #htmlLabel
+          ><span class="p-menuitem-text" [innerHTML]="child.label"></span
+        ></ng-template>
+
+        <span
+          class="p-menuitem-badge"
+          *ngIf="child.badge"
+          [ngClass]="child.badgeStyleClass"
+          >{{ child.badge }}</span
+        >
+        <span
+          class="p-submenu-icon pi"
+          *ngIf="shouldShowSubmenuIcon(child, isButtonVisible, root)"
+          [ngClass]="{ 'pi-angle-down': root, 'pi-angle-right': !root }"
+        ></span>
+      </a>
+
+      <p-menubarSub
+        [parentActive]="child === activeItem"
+        [item]="child"
+        *ngIf="child.items"
+        [isButtonVisible]="isButtonVisible"
+        [mobileActive]="mobileActive"
+        [autoDisplay]="autoDisplay"
+        (leafClick)="onLeafClick()"
+      ></p-menubarSub>
+    </li>
+  </ng-template>
+</ul>
