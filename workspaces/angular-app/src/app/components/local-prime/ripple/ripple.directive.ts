@@ -14,7 +14,7 @@ import {
   getWidth,
   removeClass,
   removeElement,
-} from "../../dom";
+} from "../dom";
 
 const config = { ripple: false };
 const INK_ACTIVE = "p-ink-active";

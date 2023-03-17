@@ -16,8 +16,8 @@ import {
   ViewEncapsulation,
 } from "@angular/core";
 import { Subscription } from "rxjs";
-import { zIndices } from "../../config/z-indices";
-import { clearZIndex, isVisible, setZIndex } from "../../dom";
+import { zIndices } from "../z-indices";
+import { clearZIndex, isVisible, setZIndex } from "../dom";
 import { TemplateDirective } from "../templates";
 import { MenubarSubComponent } from "./menubar-sub.component";
 import { MenubarService } from "./menubar.service";

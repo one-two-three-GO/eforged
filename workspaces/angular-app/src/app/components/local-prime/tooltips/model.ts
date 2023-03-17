@@ -1,4 +1,4 @@
-import { AppendToTarget, PositionOffset } from "../../dom";
+import { AppendToTarget, PositionOffset } from "../dom";
 
 export interface TooltipOptions {
   /** Whether to hide tooltip when hovering over tooltip content.

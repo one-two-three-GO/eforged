@@ -6,10 +6,9 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { MultiplesComponent } from "./components/multiples/multiples.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { PrimeDemoModule } from "./components/prime-demo/prime-demo.module";
-import { DemoModule } from "./components/ef-demo/demo.module";
+import { DemoModule } from "./components/local-prime/ef-demo/demo.module";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -17,7 +16,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 }
 
 @NgModule({
-  declarations: [AppComponent, MultiplesComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

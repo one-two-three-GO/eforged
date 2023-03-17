@@ -613,7 +613,11 @@ export function isIE(): boolean {
 }
 
 export function isIOS() {
-  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const platformIsIOS = /iPad|iPhone|iPod/.test(navigator.platform);
+  const ios13Check =
+    navigator.userAgent.includes("Mac") && "ontouchend" in document;
+  const hasStream = window.hasOwnProperty("MSStream");
+  return (platformIsIOS || ios13Check) && !hasStream;
 }
 
 export function isAndroid() {

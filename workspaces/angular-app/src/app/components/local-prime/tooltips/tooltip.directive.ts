@@ -9,7 +9,6 @@ import {
   Renderer2,
   SimpleChanges,
 } from "@angular/core";
-import { zIndices } from "../../config";
 import {
   appendChild,
   clearZIndex,
@@ -27,7 +26,8 @@ import {
   ReferenceHolder,
   AppendToTarget,
   PositionOffset,
-} from "../../dom";
+} from "../dom";
+import { zIndices } from "../z-indices";
 import { TooltipEvent, TooltipOptions, TooltipPosition } from "./model";
 import { ResolvedTooltipOptions, resolveTooltipOptions } from "./resolvers";
 

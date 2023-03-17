@@ -1,4 +1,4 @@
-import { AppendToTarget, PositionOffset } from "../../dom";
+import { AppendToTarget, PositionOffset } from "../dom";
 import {
   TooltipOptions,
   PositionStyle,
