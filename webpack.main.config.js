@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require("node:path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
