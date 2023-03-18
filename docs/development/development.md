@@ -40,9 +40,9 @@ A quick-start for Electron with Angular.
  ├── webpack.renderer.config.js
  ├── webpack.rules.js
  └── workspaces/
-      ├── angular-app/       # Angular source directory (web renderer part)
-      ├── electron-app/      # Electron source directory (main & preload part)
-      └── shared-lib/        # Shared source directory (common part)
+      ├── renderer/          # Angular source directory (web renderer part)
+      ├── main-process/      # Electron source directory (main & preload part)
+      └── common/            # Shared source directory (common part)
 ```
 
 ## Getting started
@@ -82,7 +82,7 @@ npm start
 | --------------------------- | ---------------------------------------- |
 | `npm run install`           | Install dependencies                     |
 | `npm run start`             | Run the app on desktop (dev mode)        |
-| `npm run start:angular-app` | Run the app on browser (dev mode)        |
+| `npm run start:renderer`    | Run the app on browser (dev mode)        |
 | `npm run test:angular-e2e`  | Run **angular** end-to-end tests         |
 | `npm run test:electron-e2e` | Run **electron** end-to-end tests        |
 | `npm run package`           | Build and prepare application content    |
@@ -102,32 +102,32 @@ npx cross-env ELECTRON_GET_USE_PROXY=true GLOBAL_AGENT_HTTPS_PROXY=%HTTPS_PROXY%
 
 This project architecture is based on [npm workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces). This allows having different version of the same dependency depending on your workspace :
 
-- electron-app
+- main-process
   `npm install --save <dependency>`
-- angular-app
-  `npm install --save <dependency> -w angular-app`
-- shared-lib
-  `npm install --save <dependency> -w shared-lib`
+- renderer
+  `npm install --save <dependency> -w renderer`
+- common
+  `npm install --save <dependency> -w common`
 
 ### Listing outdated dependencies
 
-- electron-app
-  `npm run outdated-deps:electron-app`
-- angular-app
-  `npm run outdated-deps:angular-app`
-- shared-lib
-  `npm run outdated-deps:shared-lib`
+- main-process
+  `npm run outdated-deps:main-process`
+- renderer
+  `npm run outdated-deps:renderer`
+- common
+  `npm run outdated-deps:common`
 - all of them
   `npm run outdated-deps`
 
 ### Updating dependencies
 
-- electron-app
-  `npm run update-deps:electron-app`
-- angular-app
-  `npm run update-deps:angular-app`
-- shared-lib
-  `npm run update-deps:shared-lib`
+- main-process
+  `npm run update-deps:main-process`
+- renderer
+  `npm run update-deps:renderer`
+- common
+  `npm run update-deps:common`
 - all of them
   `npm run update-deps`
 
@@ -143,9 +143,9 @@ electron-icon-maker --input=icon.png --output=./out
 
 Rename and move files to match with next config
 
-- ./workspaces/electron-app/main/assets/icons/icon.png for Linux
-- ./workspaces/electron-app/main/assets/icons/icon.icns for MacOs
-- ./workspaces/electron-app/main/assets/icons/icon.ico for Windows
+- ./workspaces/main-process/main/assets/icons/icon.png for Linux
+- ./workspaces/main-process/main/assets/icons/icon.icns for MacOs
+- ./workspaces/main-process/main/assets/icons/icon.ico for Windows
 
 ## Resources
 

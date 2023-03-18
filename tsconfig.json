@@ -20,8 +20,9 @@
     ],
     "paths": {
       "*": ["node_modules/*"],
-      "shared-lib/*": ["workspaces/shared-lib/*"],
-      "angular-app/*": ["workspaces/angular-app/src/app/*"]
+      "common/*": ["workspaces/common/*"],
+      "main/*": ["workspaces/main-process/*"],
+      "renderer/*": ["workspaces/renderer/src/app/*"]
     },
     "types": [
       "node",
@@ -31,5 +32,5 @@
       "@wdio/jasmine-framework"
     ]
   },
-  "include": ["workspaces/electron-app/**/*", "workspaces/electron-e2e/**/*"]
+  "include": ["workspaces/main-process/**/*", "workspaces/electron-e2e/**/*"]
 }

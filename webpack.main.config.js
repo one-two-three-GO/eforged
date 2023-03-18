@@ -6,7 +6,7 @@ module.exports = {
    * This is the main entry point for your application, it's the first file
    * that runs in the main process.
    */
-  entry: "./workspaces/electron-app/main/index.ts",
+  entry: "./workspaces/main-process/main/index.ts",
   // Put your normal webpack config below here
   module: {
     rules: require("./webpack.rules"),
@@ -18,9 +18,9 @@ module.exports = {
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
-        { from: "workspaces/electron-app/main/assets" },
+        { from: "workspaces/main-process/main/assets" },
         {
-          from: "workspaces/angular-app/.dist/angular-app",
+          from: "workspaces/renderer/.dist/renderer",
           to: "../renderer/angular_window",
           noErrorOnMissing: true,
         },
