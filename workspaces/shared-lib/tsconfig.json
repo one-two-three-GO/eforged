@@ -2,10 +2,12 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "experimentalDecorators": true,
+    "noImplicitAny": false,
     "sourceMap": true,
     "composite": true,
     "declaration": true,
-    "outDir": "./.dist"
+    "outDir": "./.dist",
+    "lib": []
   },
   "include": ["./**/*.ts"]
 }

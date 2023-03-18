@@ -13,10 +13,15 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "strictPropertyInitialization": false,
+    "lib": [
+      "ES2021",
+      "ES2021.Promise", // for AggregateError
+      "ES2021.String" // for replaceAll
+    ],
     "paths": {
       "*": ["node_modules/*"],
       "shared-lib/*": ["workspaces/shared-lib/*"],
-      "angular-app/*": ["src/app/*"]
+      "angular-app/*": ["workspaces/angular-app/src/app/*"]
     },
     "types": [
       "node",

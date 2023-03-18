@@ -30,14 +30,21 @@
         "argsIgnorePattern": "^_"
       }
     ],
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "camelCase": true,
+          "kebabCase": true
+        }
+      }
+    ],
     // "@typescript-eslint/no-explicit-any": [
     //   "error",
     //   {
     //     "ignoreRestArgs": true
     //   }
     // ],
-
-    // nix
     "@typescript-eslint/no-explicit-any": "off",
     "unicorn/prefer-module": "off",
     "unicorn/no-null": "off",
