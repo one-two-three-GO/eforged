@@ -12,8 +12,6 @@
 		"outDir": ".dist",
 		"moduleResolution": "node",
 		"resolveJsonModule": true,
-		"strictPropertyInitialization": false,
-		"strictNullChecks": false,
 		"paths": {
 			"*": [
 				"node_modules/*"
@@ -28,11 +26,6 @@
 				"workspaces/angular-app/src/app/*"
 			]
 		},
-		"lib": [
-			"ES2021",
-			"ES2021.Promise", // for AggregateError
-			"ES2021.String" // for replaceAll
-		],
 		"types": [
 			"node",
 			"expect-webdriverio",
