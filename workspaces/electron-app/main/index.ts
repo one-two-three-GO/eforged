@@ -1,7 +1,7 @@
 import * as fs from 'fs-extra';
 import _ from 'lodash';
 import * as path from 'node:path';
-import { AppConfig } from 'shared-lib';
+import { AppConfig } from 'common';
 import { App } from './components/app';
 
 declare const global: Global;

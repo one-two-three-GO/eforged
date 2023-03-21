@@ -42,7 +42,7 @@ A quick-start for Electron with Angular.
  └── workspaces/
       ├── angular-app/       # Angular source directory (web renderer part)
       ├── electron-app/      # Electron source directory (main & preload part)
-      └── shared-lib/        # Shared source directory (common part)
+      └── common/            # Shared source directory (common part)
 ```
 
 ## Getting started
@@ -106,8 +106,8 @@ This project architecture is based on [npm workspaces](https://docs.npmjs.com/cl
   `npm install --save <dependency>`
 - angular-app
   `npm install --save <dependency> -w angular-app`
-- shared-lib
-  `npm install --save <dependency> -w shared-lib`
+- common
+  `npm install --save <dependency> -w common`
 
 ### Listing outdated dependencies
 
@@ -115,8 +115,8 @@ This project architecture is based on [npm workspaces](https://docs.npmjs.com/cl
   `npm run outdated-deps:electron-app`
 - angular-app
   `npm run outdated-deps:angular-app`
-- shared-lib
-  `npm run outdated-deps:shared-lib`
+- common
+  `npm run outdated-deps:common`
 - all of them
   `npm run outdated-deps`
 
@@ -126,8 +126,8 @@ This project architecture is based on [npm workspaces](https://docs.npmjs.com/cl
   `npm run update-deps:electron-app`
 - angular-app
   `npm run update-deps:angular-app`
-- shared-lib
-  `npm run update-deps:shared-lib`
+- common
+  `npm run update-deps:common`
 - all of them
   `npm run update-deps`
 

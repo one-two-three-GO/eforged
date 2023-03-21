@@ -1,7 +1,7 @@
 import * as remoteMain from '@electron/remote/main';
 import { app, BrowserWindow, ipcMain, nativeImage } from 'electron';
 import path from 'node:path';
-import { WindowConfig, DEFAULT_WINDOW_CONFIG } from 'shared-lib';
+import { WindowConfig, DEFAULT_WINDOW_CONFIG } from 'common';
 import { IPCService } from '../services/ipc-service';
 import { Logger } from '../utils/logger';
 

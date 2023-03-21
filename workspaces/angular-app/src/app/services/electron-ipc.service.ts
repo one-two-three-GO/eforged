@@ -1,5 +1,5 @@
 import { Injectable, NgZone } from '@angular/core';
-import { WindowApi } from 'shared-lib';
+import { WindowApi } from 'common';
 
 @Injectable({
 	providedIn: 'root',

@@ -1,7 +1,7 @@
 /*/ To secure user platform when running renderer process stuff,
 // Node.JS and Electron APIs are only available in this script
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
-import { WindowApi, WindowApiConst } from 'shared-lib';
+import { WindowApi, WindowApiConst } from 'common';
 
 // So we expose protected methods that allow the renderer process
 // to use the ipcRenderer without exposing the entire object
@@ -34,7 +34,7 @@ if (process.env.X_NODE_ENV === 'e2e-test') {
 }*/
 
 import { contextBridge, ipcRenderer, IpcRendererEvent } from 'electron';
-import { WindowApiConst } from 'shared-lib';
+import { WindowApiConst } from 'common';
 
 contextBridge.exposeInMainWorld('api', {
 	node: () => process.versions.node,

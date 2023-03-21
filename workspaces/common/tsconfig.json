@@ -4,7 +4,11 @@
 		"sourceMap": true,
 		"composite": true,
 		"declaration": true,
-		"outDir": "./.dist"
+		"rootDir": "./src",
+		"outDir": "./.dist",
+		"tsBuildInfoFile": "./.dist/.tsbuildinfo",
 	},
-	"include": ["./**/*.ts"]
+	"include": [
+		"./**/*.ts"
+	]
 }

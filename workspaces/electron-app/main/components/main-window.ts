@@ -1,7 +1,7 @@
 import { ipcMain } from 'electron';
 import * as path from 'node:path';
 import { MultiplesService } from '../services/multiples-service';
-import { AppConfig } from 'shared-lib';
+import { AppConfig } from 'common';
 import { Window } from './window';
 
 declare const global: Global;

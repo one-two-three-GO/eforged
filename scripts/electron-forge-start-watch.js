@@ -15,7 +15,7 @@ class ElectronForgeRunner {
 		this.cwd = process.cwd();
 		this.watchPaths = [
 			path.join(this.cwd, '/workspaces/electron-app/**/*.ts'),
-			path.join(this.cwd, '/workspaces/shared-lib/.dist/**/*.ts'),
+			path.join(this.cwd, '/workspaces/common/.dist/**/*.ts'),
 		];
 		this.ignoredPaths = '**/node_modules/*';
 

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, UntypedFormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { WindowApiConst } from 'shared-lib';
+import { WindowApiConst } from 'common';
 import { ElectronIpcService } from '../../services/electron-ipc.service';
 
 @Component({

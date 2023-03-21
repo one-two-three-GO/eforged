@@ -1,4 +1,4 @@
-import { WindowApiConst } from 'shared-lib';
+import { WindowApiConst } from 'common';
 import { IPCService } from './ipc-service';
 
 export class MultiplesService extends IPCService<number, number[]> {
