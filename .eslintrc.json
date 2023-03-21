@@ -5,7 +5,12 @@
     "es2021": true,
     "node": true
   },
-  "plugins": ["@typescript-eslint", "import", "unicorn", "sonarjs"],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "unicorn",
+    "sonarjs"
+  ],
   "extends": [
     "plugin:unicorn/recommended",
     "plugin:sonarjs/recommended",
@@ -23,34 +28,53 @@
       }
     }
   },
-  "ignorePatterns": ["**/dist/**/*", "**/.dist/**/*", "**/*.js"],
+  "ignorePatterns": [
+    "**/dist/**/*",
+    "**/.dist/**/*",
+    "**/*.js"
+  ],
   "rules": {
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      {
-        "argsIgnorePattern": "^_"
-      }
-    ],
     "unicorn/filename-case": [
       "error",
       {
         "cases": {
           "camelCase": true,
-          "kebabCase": true
+          "kebabCase": true,
+          "pascalCase": true
         }
       }
     ],
+    "@typescript-eslint/no-explicit-any": "off",
     // "@typescript-eslint/no-explicit-any": [
     //   "error",
     //   {
     //     "ignoreRestArgs": true
     //   }
     // ],
-    "@typescript-eslint/no-explicit-any": "off",
-    // "@typescript-eslint/no-var-requires": "off",  // breaks 'require's in .js files
+    "unicorn/prevent-abbreviations": [
+      "error",
+      {
+        "replacements": {
+          "args": false,
+          "opts": false,
+          "obj": false
+        }
+      }
+    ],
     "unicorn/prefer-module": "off",
     "unicorn/no-null": "off",
     "unicorn/prefer-spread": "off",
-    "unicorn/no-for-loop": "off"
+    "unicorn/no-for-loop": "off",
+    "unicorn/empty-brace-spaces": "off", // this rule enforces consistency
+    "@typescript-eslint/no-empty-function": "off",
+    "sonarjs/cognitive-complexity": "off",
+    "sonarjs/prefer-immediate-return": "off",
+    "@typescript-eslint/no-unused-vars": "off" // turn this on to find dead code!
+    // "@typescript-eslint/no-unused-vars": [
+    //   "error",
+    //   {
+    //     "argsIgnorePattern": "^_"
+    //   }
+    // ]
   }
 }
