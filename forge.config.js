@@ -1,7 +1,7 @@
 module.exports = {
 	packagerConfig: {
-		name: 'Electron Angular App',
-		executableName: 'electron-angular-app',
+		name: 'eForged',
+		executableName: 'eforged',
 		icon: './workspaces/electron-app/main/assets/icons/icon',
 	},
 	makers: [
